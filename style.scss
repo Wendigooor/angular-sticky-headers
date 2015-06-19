@@ -1,0 +1,39 @@
+$color1: change-color(#6B45C9, $lightness: 58%);
+$color2: change-color(#ED5C5A, $lightness: 58%);
+
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+@mixin section-colors($color) {
+    background: change-color($color, $lightness: 70%);
+    .section-header {
+        width: 100%;
+        color: white;
+        background: change-color($color, $lightness: 45%);
+        border-bottom-color: rgba(black, .1);
+    }
+    .section-content {
+        color: change-color($color, $lightness: 12%);
+    }
+}
+
+.section {
+    min-height: 200px;
+    @include section-colors($color1);
+    &:nth-child(even) {
+       @include section-colors($color2);
+    }
+    .section-header {
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        padding: 6px 12px;
+    }
+    .section-heading {
+        font-size: 18px;
+        line-height: 24px;
+    }
+    .section-content {
+        padding: 12px;
+    }
+}
